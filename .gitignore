@@ -1,5 +1,32 @@
+# Node
 node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Vite / build
 .vite/
-.env
 dist/
 build/
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+*.txt
+
+# Debug / test files
+test_db.js
+test-db.js
+check-db-name.js
+list_entries.js
+
+# OS / Editor
+.DS_Store
+.vscode/
+
+# Kubernetes temp files
+k8s_backend_logs.txt
+k8s_last_error.txt
+mongo_uri.txt

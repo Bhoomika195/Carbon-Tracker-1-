@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carbon-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carbon-backend
+  template:
+    metadata:
+      labels:
+        app: carbon-backend
+    spec:
+      containers:
+      - name: carbon-backend
+        image: carbon-backend:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGODB_URI
+          valueFrom:
+            secretKeyRef:
+              name: carbon-secrets
+              key: mongodb-uri
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: carbon-secrets
+              key: jwt-secret
+        - name: PORT
+          value: "5000"

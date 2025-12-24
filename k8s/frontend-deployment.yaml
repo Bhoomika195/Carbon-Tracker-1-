@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carbon-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: carbon-frontend
+  template:
+    metadata:
+      labels:
+        app: carbon-frontend
+    spec:
+      containers:
+      - name: carbon-frontend
+        image: carbon-frontend:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80

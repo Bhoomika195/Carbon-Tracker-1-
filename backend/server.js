@@ -37,6 +37,11 @@ const Entry = require('./models/Entry');
 
 // ✅ MongoDB Connection (CLEAN & SAFE)
 const uri = process.env.MONGODB_URI ? process.env.MONGODB_URI.trim() : '';
+const maskedUri = uri.replace(/:([^:@]+)@/, ':****@');
+logToFile(`Using URI: ${maskedUri}`);
+logToFile(`URI Start: "${uri.substring(0, 10)}..."`);
+logToFile(`URI End: "...${uri.substring(uri.length - 10)}"`);
+logToFile(`URI Length: ${uri.length}`);
 
 logToFile('Attempting to connect to MongoDB Atlas...');
 mongoose.connect(uri)
